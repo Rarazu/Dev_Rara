@@ -72,7 +72,6 @@ class _CustomerListState extends State<CustomerList> {
                     final customer = customerList[index];
                     return GestureDetector(
                       onTap: () {
-                        // Navigate to map screen with customer data
                         Navigator.push(
                           context,
                           MaterialPageRoute(

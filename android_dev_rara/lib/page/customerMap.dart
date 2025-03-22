@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart'; // pastikan menggunakan latlong2
+import 'package:latlong2/latlong.dart'; 
 import '../model/Customer.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -16,7 +16,6 @@ class CustomerMap extends StatefulWidget {
 class _CustomerMapState extends State<CustomerMap> {
   late PermissionStatus _locationPermissionStatus;
 
-  // Untuk mengecek izin lokasi
   Future<void> _checkLocationPermission() async {
     _locationPermissionStatus = await Permission.location.request();
     if (_locationPermissionStatus.isGranted) {
@@ -29,7 +28,7 @@ class _CustomerMapState extends State<CustomerMap> {
   @override
   void initState() {
     super.initState();
-    _checkLocationPermission(); // Memeriksa izin lokasi saat pertama kali membuka halaman
+    _checkLocationPermission(); 
   }
 
   @override
@@ -52,8 +51,8 @@ class _CustomerMapState extends State<CustomerMap> {
       ),
       body: FlutterMap(
         options: MapOptions(
-          initialCenter: LatLng(widget.customer.latitude, widget.customer.longitude), // Menyesuaikan parameter center
-          minZoom: 6.0, // Menentukan zoom awal
+          initialCenter: LatLng(widget.customer.latitude, widget.customer.longitude), 
+          minZoom: 6.0, 
           // maxZoom: 18.0,
         ),
         children: [
@@ -65,8 +64,8 @@ class _CustomerMapState extends State<CustomerMap> {
             markers: [
               Marker(
                 point: LatLng(widget.customer.latitude, widget.customer.longitude),
-                width: 40, // Lebar dari marker
-                height: 40, // Tinggi dari marker
+                width: 40, 
+                height: 40, 
                 child: Icon(
                   Icons.location_on,
                   color: Colors.red,
@@ -106,7 +105,7 @@ class _CustomerMapState extends State<CustomerMap> {
                           padding: const EdgeInsets.all(16.0),
                           child: Center(
                             child: Icon(
-                              Icons.location_on, // Bisa diganti dengan ikon lain
+                              Icons.location_on, 
                               color: Colors.white,
                               size: 50.0,
                             ),
@@ -132,14 +131,14 @@ class _CustomerMapState extends State<CustomerMap> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(width: 10), // Memberikan jarak antara label dan nilai
+                        SizedBox(width: 10), 
                         Expanded(
                           child: Text(
                             widget.customer.name,
                             style: TextStyle(
                               fontSize: 18.0,
                             ),
-                            overflow: TextOverflow.ellipsis, // Jika teks terlalu panjang
+                            overflow: TextOverflow.ellipsis, 
                           ),
                         ),
                       ],
@@ -168,7 +167,7 @@ class _CustomerMapState extends State<CustomerMap> {
                     ),
                     SizedBox(height: 5),
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start, // Agar teks Address dan alamat sejajar ke atas
+                      crossAxisAlignment: CrossAxisAlignment.start, 
                       children: [
                         Text(
                           'Address   :',
@@ -184,7 +183,7 @@ class _CustomerMapState extends State<CustomerMap> {
                             style: TextStyle(
                               fontSize: 16.0,
                             ),
-                            softWrap: true, // Membungkus teks alamat jika terlalu panjang
+                            softWrap: true, 
                           ),
                         ),
                       ],
